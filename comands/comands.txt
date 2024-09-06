@@ -1,0 +1,18 @@
+1 задание
+wc textFile
+
+2 задание
+grep "cake" cake_rhymes.txt > newTxtFile.txt
+rm newTxtFile1.txt 2 > /dev/null
+
+3 задание
+ls -l hello.sh
+chmod a+rwx hello.sh
+sh hello.sh
+> myScript.sh
+sh myScript.sh
+
+4 задание
+for ((i = 0 ; i < 150 ; i++ )); do od -An -N1 -i /dev/random | tr -d ' \t' >> randomNumbers.txt; done
+chmod a+rwx task4_1.sh
+cat randomNumbers.txt | xargs ./task4_1.sh
