@@ -1,0 +1,23 @@
+1 задание
+gcc -c main.c
+gcc -c swap.c
+gcc main.o swap.o -o task1
+chmod u+rwx task1
+./task1
+
+2 задание
+gcc -c main.c
+gcc -c revert_string.h
+gcc -c revert_string.c
+./task2
+
+3 задание 
+gcc -c main.c -o main.o #Create object file for main
+gcc -c revert_string.c -o static/revert_string.o #Create object file for static library
+gcc -c -fPIC revert_string.c -o shared/rever_string.o #Create object file with position independent code for shared library
+ar rcs static/staticLib.a static/revert_string.o #Архивируем
+gcc main.o -Lstatic -lStatic -o staticlly-linked #Линкуем статически
+./staticlly-linked qwerty #Test static library
+gcc -shared shared/rever_string.o -o shared/libShared.so #Create archive for shared library
+gcc main.o -Lshared -lShared -o shared-linked #Linked dinamicly
+LD_LIBRARY_PATH=$(pwd)/shared ./shared-linked qwerty #Test library
