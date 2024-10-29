@@ -8,7 +8,7 @@ gcc -o sequential_min_max sequential_min_max.c find_min_max.c utils.c сборк
 2-3 Задание
 gcc -o parallel_min_max parallel_min_max.c find_min_max.c utils.c Сборка
 
- ./parallel_min_max --seed 1234 --array_size 10 --pnum 4  с межпроцессорным взаимодействием
+./parallel_min_max --seed 1234 --array_size 10 --pnum 4  с межпроцессорным взаимодействием
 ./parallel_min_max --seed 1234 --array_size 10 --pnum 4 -f с созданием файлом и общением через них, спользуя дескрипторы записи и чтения
 
 4 задание
