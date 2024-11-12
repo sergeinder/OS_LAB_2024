@@ -33,9 +33,10 @@ void *WaitForResponse(void *args) {
   return (void *)ans;
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char *argv[]) {
   uint64_t k = -1;
   uint64_t mod = -1;
+
   char servers[255] = {'\0'}; // TODO: explain why 255
   FILE *a;
 
@@ -95,13 +96,13 @@ int main(int argc, char **argv) {
       fprintf(stderr, "getopt returned character code 0%o?\n", c);
     }
   }
-
+ 
   if (k == -1 || mod == -1 || !strlen(servers)) {
     fprintf(stderr, "Using: %s --k 1000 --mod 5 --servers /path/to/file\n",
             argv[0]);
     return 1;
   }
-
+  
   // TODO: for one server here, rewrite with servers from file
   unsigned int servers_num = 0;
   int size = 10;
@@ -109,6 +110,7 @@ int main(int argc, char **argv) {
   a = fopen(servers, "r");
   char *cadress;
   char tmp[255] = {'\0'};
+  
   while (!feof(a)) {
     if (servers_num == size) {
       size = size + 10;
@@ -120,6 +122,7 @@ int main(int argc, char **argv) {
     to[servers_num].port = atoi(strtok(NULL, ":"));
     servers_num++;
   }
+  
   if (to[servers_num - 1].port == 0)
     servers_num--;
   fclose(a);
@@ -198,4 +201,5 @@ int main(int argc, char **argv) {
 
   printf("Factorial %llu by mod %llu = %llu\n", k, mod, answer);
   return 0;
+  
 }
